@@ -38,6 +38,8 @@ public class Grades extends Activity {
         tvGrade1 = (TextView) findViewById(R.id.tvGrade1);
         tvGrade2 = (TextView) findViewById(R.id.tvGrade2);
         tvGrade3 = (TextView) findViewById(R.id.tvGrade3);
+
+        btnGrades.setEnabled(false);
     }
 
     public void setSemester(View view){
@@ -86,6 +88,8 @@ public class Grades extends Activity {
         tvGrade2.setText(" ");
         tvClass3.setText(" ");
         tvGrade3.setText(" ");
+
+        btnGrades.setEnabled(true);
     }
 
     public void getGrades(View view){
