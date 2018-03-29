@@ -25,4 +25,21 @@ public void openActivity(View view){
             startActivity(i);
         }
     }
+
+    public void openActivityBus(View view){
+            Intent i = new Intent(this, bus.class);
+            startActivity(i);
+    }
+
+
+
+public void   getGrizzID(View view){
+    String username = "tester@tester.com";
+    String password = "shouldnt_need";
+    String type = "login";
+
+    getGrizz getGrizz = new getGrizz(this);
+    getGrizz.execute(type, username, password);
+
+}
 }
