@@ -17,4 +17,11 @@ Use the VCS menu to Commit Changes or Update Project.
 
 
 Troubleshooting
+
 "Error: Please select Android DSK" - Resync Gradle with icon next to save icon.
+
+"Gradle sync failed: java.lang.NullPointerException" - Clean project under Build menu and make project.
+
+Run button greyed out - Resync Gradle with icon next to save icon.
+
+"Google Play Services update needed" - Deploy to physical device or create a new virtual device with the Google Play store (with AVD manager) and update play services in the Play Store (on new virtual device)
