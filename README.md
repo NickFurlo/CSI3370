@@ -13,4 +13,8 @@ To set up the project by pulling from GitHub, do the following
 8) Right click the app folder > Synchronize 'app'
 9) Set up a virtual or physical android device and begin coding!
 
-Use the VCS menu to Commit Changes or Update Project. 
+Use the VCS menu to Commit Changes or Update Project.
+
+
+Troubleshooting
+"Error: Please select Android DSK" - Resync Gradle with icon next to save icon.
