@@ -1,0 +1,9 @@
+# Intellij
+*.iml
+workspace.xml
+tasks.xml
+gradle.xml
+dictionaries
+libraries
+
+!vcs.xml
