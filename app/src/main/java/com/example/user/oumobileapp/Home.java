@@ -16,6 +16,30 @@ public class Home extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
 
+
+        //The buttons to get to the their respective use cases
+        Button goFinAid = (Button)findViewById(R.id.goFinAidBtn);
+        goFinAid.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v){
+
+                Intent goFin = new Intent(getApplicationContext(),finAid.class);
+                startActivity(goFin);
+            }
+        });
+
+        Button goAdv = (Button)findViewById(R.id.goAdvisingBtn);
+        goAdv.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v){
+
+                Intent goAdv = new Intent(getApplicationContext(),advSelect.class);
+                startActivity(goAdv);
+            }
+        });
+
     }
 public void openActivity(View view){
         String btnText;

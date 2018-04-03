@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">OU Mobile App</string>
+    <string name="title_activity_advising_select">advisingSelect</string>
 </resources>
