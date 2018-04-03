@@ -18,7 +18,7 @@ Use the VCS menu to Commit Changes or Update Project.
 
 Troubleshooting
 
-"Error: Please select Android DSK" - Resync Gradle with icon next to save icon.
+"Error: Please select Android DSK" - Resync Gradle with icon next to save icon. Alternatively File>Sync roject with gradle files  
 
 "Gradle sync failed: java.lang.NullPointerException" - Clean project under Build menu and make project.
 
