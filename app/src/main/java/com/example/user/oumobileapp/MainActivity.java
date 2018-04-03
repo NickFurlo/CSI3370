@@ -15,7 +15,12 @@ public class MainActivity extends AppCompatActivity {
 
     private EditText etUsername, etPassword;
     private Button btnLogin;
+
     @Override
+
+    /**
+     * Initializes the form, username and password variables, as well as the button.
+     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -23,7 +28,13 @@ public class MainActivity extends AppCompatActivity {
         etPassword = (EditText) findViewById(R.id.etPassword);
         btnLogin = (Button) findViewById(R.id.btnLogin);
     }
-    public void testLogin(View view){
+
+    /**
+     * queries PHP with username and password to check for authentication
+     *
+     * @param view current view
+     */
+    public void testLogin(View view) {
         String username = etUsername.getText().toString();
         String password = etPassword.getText().toString();
         String type = "login";
@@ -48,9 +59,14 @@ public class MainActivity extends AppCompatActivity {
         }*/
 
 
-
     }
-    public void ResetPassword(View view){
+
+    /**
+     * Queries the PHP server to send out a change of password form to the corresponding user.
+     *
+     * @param view current view
+     */
+    public void ResetPassword(View view) {
         String username = etUsername.getText().toString();
         String password = etPassword.getText().toString();
         String type = "login";
