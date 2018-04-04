@@ -41,7 +41,7 @@ public class courseInfo extends AppCompatActivity {
     }
 
     public void chooseSemester (View view){
-        AlertDialog.Builder pickSemester = new AlertDialog.Builder(ma.this);
+        AlertDialog.Builder pickSemester = new AlertDialog.Builder(courseInfo.this);
         pickSemester.setTitle("Select Semester");
 
         final String[] semesters = {"Fall 2018", "Winter 2018"};
