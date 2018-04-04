@@ -9,6 +9,7 @@ import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -33,6 +34,9 @@ import java.net.URLEncoder;
 
 public class bus extends AppCompatActivity implements OnMapReadyCallback {
 
+    //Button variable
+    private Button btnReset;
+
     //Map variable
     private GoogleMap mMap;
 
@@ -48,11 +52,19 @@ public class bus extends AppCompatActivity implements OnMapReadyCallback {
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.g_map);
         mapFragment.getMapAsync(this);
+
+        //Disable button until map is ready
+        btnReset = (Button) findViewById(R.id.btnReset);
+        btnReset.setEnabled(false);
     }
 
     //When map is ready
     @Override
     public void onMapReady(GoogleMap googleMap) {
+
+        //Enable button until map is ready
+        btnReset.setEnabled(true);
+
         mMap = googleMap;
 
         //Static bus locations
