@@ -1,19 +1,31 @@
 package com.example.user.oumobileapp;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
-public class courseInfo extends AppCompatActivity {
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLEncoder;
+
+public class courseinfo extends AppCompatActivity {
     private TextView tvInfo, tvPrereq, tvSummary;
     private Button btnSemester, btnCourse;
     private String semesterText, courseText, singleDescription, singlePrereq;
@@ -22,7 +34,7 @@ public class courseInfo extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_course_info);
+        setContentView(R.layout.activity_courseinfo);
 
         tvSummary = (TextView) findViewById(R.id.tvSummary);
 
@@ -40,8 +52,8 @@ public class courseInfo extends AppCompatActivity {
 
     }
 
-    public void chooseSemester (View view){
-        AlertDialog.Builder pickSemester = new AlertDialog.Builder(courseInfo.this);
+    public void chooseSemester(View view) {
+        AlertDialog.Builder pickSemester = new AlertDialog.Builder(courseinfo.this);
         pickSemester.setTitle("Select Semester");
 
         final String[] semesters = {"Fall 2018", "Winter 2018"};
@@ -49,7 +61,7 @@ public class courseInfo extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 dialogInterface.dismiss();
-                switch(i){
+                switch (i) {
                     case 0:
                         semesterText = semesters[i].toUpperCase();
 
@@ -67,12 +79,20 @@ public class courseInfo extends AppCompatActivity {
         tvSummary.setText("");
     }
 
-    public void getCourseInfo (View view){
+
+    public void getCourseInfo(View view) {
+        //Call getInfo
+        String username = "tester@tester.com";
+        String password = "shouldnt_need";
+        String type = "login";
+        getInfo getInfo = new getInfo(this);
+        getInfo.execute(type, username, password);
+        /*
         if (semesterText.contains("WINTER 2018"))
         {
             tvInfo.setText("");
             tvPrereq.setText("");
-            AlertDialog.Builder noSemester = new AlertDialog.Builder(courseInfo.this);
+            AlertDialog.Builder noSemester = new AlertDialog.Builder(courseinfo.this);
             noSemester.setTitle("No Courses");
             noSemester.setMessage("You are not enrolled in any courses for this semester.");
             noSemester.show();
@@ -80,7 +100,7 @@ public class courseInfo extends AppCompatActivity {
 
         else if (semesterText.contains("FALL 2018"))
         {
-            AlertDialog.Builder newCourse = new AlertDialog.Builder (courseInfo.this);
+            AlertDialog.Builder newCourse = new AlertDialog.Builder (courseinfo.this);
             newCourse.setTitle("Select Course");
             final String[] prereqs = {"Prerequisites: CSI 2300","Prerequisites: CSI 2440","Prerequisites: None"};
 
@@ -130,5 +150,144 @@ public class courseInfo extends AppCompatActivity {
             tvInfo.setText("");
             tvPrereq.setText("");
             newCourse.show();
-        }}}
+        }
 
+        */
+    }
+
+    //Datbase connection
+    //CAN PROBABLY ONLY HANDLE A SINGLE LINE AS OF 4/2
+    public class getInfo extends AsyncTask<String, Void, String> {
+        Context context;
+
+        getInfo(Context ctx) {
+            context = ctx;
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            String type = params[0];
+            String login_url = "http://www.secs.oakland.edu/~ksmith/trackBus.php";
+
+            try {
+                String useremail = params[1];
+                String password = params[2];
+                URL url = new URL(login_url);
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                httpURLConnection.setRequestMethod("POST");
+                httpURLConnection.setDoOutput(true);
+                httpURLConnection.setDoInput(true);
+                OutputStream outputStream = httpURLConnection.getOutputStream();
+                BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
+                String post_data = URLEncoder.encode("useremail", "UTF-8") + "=" + URLEncoder.encode(useremail, "UTF-8") + "&"
+                        + URLEncoder.encode("password", "UTF-8") + "=" + URLEncoder.encode(password, "UTF-8");
+                bufferedWriter.write(post_data);
+                bufferedWriter.flush();
+                bufferedWriter.close();
+                outputStream.close();
+                InputStream inputStream = httpURLConnection.getInputStream();
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "iso-8859-1"));
+                String result = "";
+                String line = "";
+                while ((line = bufferedReader.readLine()) != null) {
+                    result += line;
+                }
+                bufferedReader.close();
+                inputStream.close();
+                httpURLConnection.disconnect();
+                return result;
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+
+            return null;
+
+
+        }
+
+
+        @Override
+        protected void onPreExecute() {
+            //PreExecute tasks
+        }
+
+        //Convert PHP output to LatLng var and create marker
+        @Override
+        protected void onPostExecute(String result) {
+
+            final String finalresult = result;
+
+            if (semesterText.contains("WINTER 2018")) {
+                tvInfo.setText("");
+                tvPrereq.setText("");
+                AlertDialog.Builder noSemester = new AlertDialog.Builder(courseinfo.this);
+                noSemester.setTitle("No Courses");
+                noSemester.setMessage("You are not enrolled in any courses for this semester.");
+                noSemester.show();
+            } else if (semesterText.contains("FALL 2018")) {
+                AlertDialog.Builder newCourse = new AlertDialog.Builder(courseinfo.this);
+                newCourse.setTitle("Select Course");
+                final String[] prereqs = {"Prerequisites: CSI 2300", "Prerequisites: CSI 2440", "Prerequisites: None"};
+
+                final String[] descriptions = {"A team-oriented project work consisting of a small project to build skills in needs assessment, group problem solving, and written and oral technical presentations.",
+                        "Introduces fundamental concepts of system administration for Unix and Windows operating systems. Concepts of operating system such as file system, memory management, processes and service management are discussed in view of System Administration. Script programming is introduced to automate system administration tasks.",
+                        "This course introduces students to the global business environment. It focuses on how differences in economic systems, national culture, socio-demographics, and political orientations affect business operations. It also provides an introduction to key business activities."};
+
+                final String[] courses = {"CSI 2999", "CSI 2500", "MGT 1100"};
+
+                newCourse.setItems(courses, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                        switch (i) {
+                            case 0:
+                                courseText = courses[i].toUpperCase();
+                                tvSummary.setText(courseText);
+
+                                singlePrereq = prereqs[i];
+                                tvPrereq.setText(singlePrereq);
+
+                                singleDescription = descriptions[i];
+                                tvInfo.setText(singleDescription);
+                            case 1:
+                                courseText = courses[i].toUpperCase();
+                                tvSummary.setText(courseText);
+
+                                singlePrereq = prereqs[i];
+                                tvPrereq.setText(singlePrereq);
+
+                                singleDescription = descriptions[i];
+                                tvInfo.setText(singleDescription);
+
+                            case 2:
+
+                                courseText = courses[i].toUpperCase();
+                                tvSummary.setText(courseText);
+
+                                singlePrereq = prereqs[i];
+                                tvPrereq.setText(singlePrereq);
+
+                                singleDescription = descriptions[i];
+                                tvInfo.setText(singleDescription);
+                        }
+                    }
+                });
+                tvSummary.setText(finalresult);
+                tvInfo.setText("");
+                tvPrereq.setText("");
+                newCourse.show();
+            }
+
+        }
+
+        @Override
+        protected void onProgressUpdate(Void... values) {
+            super.onProgressUpdate(values);
+        }
+
+
+    }
+}

@@ -70,6 +70,11 @@ public class Home extends Activity {
         startActivity(i);
     }
 
+    public void openActivityCourseInfo(View view) {
+        Intent i = new Intent(this, courseinfo.class);
+        startActivity(i);
+    }
+
     /**
      * queried PHP server for grizz ID of current authenticated user.
      *
