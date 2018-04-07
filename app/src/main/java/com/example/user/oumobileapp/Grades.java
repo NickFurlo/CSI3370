@@ -17,12 +17,17 @@ import android.widget.TextView;
 
 public class Grades extends Activity {
 
-    private TextView tvSemester, tvClass1, tvClass2,tvClass3, tvGrade1, tvGrade2, tvGrade3;
+    private TextView tvSemester, tvClass1, tvClass2, tvClass3, tvGrade1, tvGrade2, tvGrade3;
     private Button btnSetSemester, btnGrades;
     private String semesterText;
 
 
-    protected void onCreate(@Nullable Bundle savedInstanceState){
+    /**
+     * Initiates buttons, and textviews.
+     *
+     * @param savedInstanceState current state to be saved and passed
+     */
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.grades);
 
@@ -42,19 +47,24 @@ public class Grades extends Activity {
         btnGrades.setEnabled(false);
     }
 
-    public void setSemester(View view){
+    /**
+     * Allows user to pick and set a semester to view
+     *
+     * @param view current view
+     */
+    public void setSemester(View view) {
         AlertDialog.Builder newSemester = new AlertDialog.Builder(Grades.this);
         newSemester.setTitle("Select Semester");
 
-       // final EditText input = new EditText(this);
-       // input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_CAP_SENTENCES);
-      //  newSemester.setView(input);
+        // final EditText input = new EditText(this);
+        // input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_CAP_SENTENCES);
+        //  newSemester.setView(input);
         final String[] semesters = {"Fall 2018", "Winter 2018"};
         newSemester.setItems(semesters, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 dialogInterface.dismiss();
-                switch(i){
+                switch (i) {
                     case 0:
                         semesterText = semesters[i].toUpperCase();
                         tvSemester.setText(semesterText);
@@ -92,17 +102,20 @@ public class Grades extends Activity {
         btnGrades.setEnabled(true);
     }
 
-    public void getGrades(View view){
-        if (semesterText.contains("FALL 2018")){
+    /**
+     * Display grades for set semester.
+     *
+     * @param view current view
+     */
+    public void getGrades(View view) {
+        if (semesterText.contains("FALL 2018")) {
             tvClass1.setText("CSI 2999");
             tvGrade1.setText("3.5");
             tvClass2.setText("CSI 2500");
             tvGrade2.setText("3.2");
             tvClass3.setText("MGT 1100");
             tvGrade3.setText("3.0");
-        }
-
-        else{
+        } else {
             tvSemester.setText(" ");
             tvClass1.setText(" ");
             tvGrade1.setText(" ");

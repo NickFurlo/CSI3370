@@ -13,6 +13,9 @@ bin/
 gen/
 out/
 
+#idea config files
+.idea/
+
 # Gradle files
 .gradle/
 build/

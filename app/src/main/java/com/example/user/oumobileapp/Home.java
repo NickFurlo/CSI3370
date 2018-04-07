@@ -15,6 +15,8 @@ import android.widget.Button;
 public class Home extends Activity {
 
     /**
+     * Initializes buttons and sets which intent to open upon being clicked.
+     *
      * @param savedInstanceState
      */
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -70,8 +72,13 @@ public class Home extends Activity {
         startActivity(i);
     }
 
+    /**
+     * Opesn courseinfo activity
+     *
+     * @param view current view
+     */
     public void openActivityCourseInfo(View view) {
-        Intent i = new Intent(this, courseinfo.class);
+        Intent i = new Intent(this, courseInfo.class);
         startActivity(i);
     }
 

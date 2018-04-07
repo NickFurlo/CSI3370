@@ -10,9 +10,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -25,12 +22,17 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 
-public class courseinfo extends AppCompatActivity {
+public class courseInfo extends AppCompatActivity {
     private TextView tvInfo, tvPrereq, tvSummary;
     private Button btnSemester, btnCourse;
     private String semesterText, courseText, singleDescription, singlePrereq;
 
 
+    /**
+     * Initializes buttons and textviews.
+     *
+     * @param savedInstanceState current state to be saved and passed
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,8 +54,13 @@ public class courseinfo extends AppCompatActivity {
 
     }
 
+    /**
+     * Allows user to pick and set a semester to view
+     *
+     * @param view current view
+     */
     public void chooseSemester(View view) {
-        AlertDialog.Builder pickSemester = new AlertDialog.Builder(courseinfo.this);
+        AlertDialog.Builder pickSemester = new AlertDialog.Builder(courseInfo.this);
         pickSemester.setTitle("Select Semester");
 
         final String[] semesters = {"Fall 2018", "Winter 2018"};
@@ -79,7 +86,11 @@ public class courseinfo extends AppCompatActivity {
         tvSummary.setText("");
     }
 
-
+    /**
+     * Displays course info to user based on selected information
+     *
+     * @param view current view
+     */
     public void getCourseInfo(View view) {
         //Call getInfo
         String username = "tester@tester.com";
@@ -90,6 +101,7 @@ public class courseinfo extends AppCompatActivity {
         /*
         if (semesterText.contains("WINTER 2018"))
         {
+            tvInfo.setText("");
             tvInfo.setText("");
             tvPrereq.setText("");
             AlertDialog.Builder noSemester = new AlertDialog.Builder(courseinfo.this);
@@ -164,6 +176,12 @@ public class courseinfo extends AppCompatActivity {
             context = ctx;
         }
 
+        /**
+         * Gets app connected to the database and logged in.
+         *
+         * @param params parameter array for user email and password.
+         * @return whether or not app is connected to database
+         */
         @Override
         protected String doInBackground(String... params) {
             String type = params[0];
@@ -201,20 +219,23 @@ public class courseinfo extends AppCompatActivity {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
-
             return null;
-
-
         }
 
 
+        /**
+         * Performs pre-execute tasks
+         */
         @Override
         protected void onPreExecute() {
             //PreExecute tasks
         }
 
-        //Convert PHP output to LatLng var and create marker
+        /**
+         * Converts PHP output to LatLng variable and create marker
+         *
+         * @param result outputs result of post execute actions
+         */
         @Override
         protected void onPostExecute(String result) {
 
@@ -223,12 +244,12 @@ public class courseinfo extends AppCompatActivity {
             if (semesterText.contains("WINTER 2018")) {
                 tvInfo.setText("");
                 tvPrereq.setText("");
-                AlertDialog.Builder noSemester = new AlertDialog.Builder(courseinfo.this);
+                AlertDialog.Builder noSemester = new AlertDialog.Builder(courseInfo.this);
                 noSemester.setTitle("No Courses");
                 noSemester.setMessage("You are not enrolled in any courses for this semester.");
                 noSemester.show();
             } else if (semesterText.contains("FALL 2018")) {
-                AlertDialog.Builder newCourse = new AlertDialog.Builder(courseinfo.this);
+                AlertDialog.Builder newCourse = new AlertDialog.Builder(courseInfo.this);
                 newCourse.setTitle("Select Course");
                 final String[] prereqs = {"Prerequisites: CSI 2300", "Prerequisites: CSI 2440", "Prerequisites: None"};
 
@@ -283,6 +304,11 @@ public class courseinfo extends AppCompatActivity {
 
         }
 
+        /**
+         * Updates app progress
+         *
+         * @param values values to be updated
+         */
         @Override
         protected void onProgressUpdate(Void... values) {
             super.onProgressUpdate(values);

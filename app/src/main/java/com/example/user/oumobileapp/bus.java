@@ -41,7 +41,7 @@ public class bus extends AppCompatActivity implements OnMapReadyCallback {
     private GoogleMap mMap;
 
     //OU base location
-    LatLng oakland = new LatLng(42.6729472,-83.2184753);
+    LatLng oakland = new LatLng(42.6729472, -83.2184753);
 
     //Init map
     @Override
@@ -68,10 +68,10 @@ public class bus extends AppCompatActivity implements OnMapReadyCallback {
         mMap = googleMap;
 
         //Static bus locations
-        LatLng bus1 = new LatLng(42.6776306,-83.2196052);
-        LatLng bus2 = new LatLng(42.6734264,-83.2210523);
-        LatLng bus3 = new LatLng(42.6719582,-83.2159923);
-        LatLng bus4 = new LatLng(42.6742201,-83.2071659);
+        LatLng bus1 = new LatLng(42.6776306, -83.2196052);
+        LatLng bus2 = new LatLng(42.6734264, -83.2210523);
+        LatLng bus3 = new LatLng(42.6719582, -83.2159923);
+        LatLng bus4 = new LatLng(42.6742201, -83.2071659);
 
         //Customize map zoom and type
         mMap.setMinZoomPreference(10);
@@ -115,65 +115,68 @@ public class bus extends AppCompatActivity implements OnMapReadyCallback {
     //CAN PROBABLY ONLY HANDLE A SINGLE LINE AS OF 4/2
     public class getBus extends AsyncTask<String, Void, String> {
         Context context;
-        getBus(Context ctx){
+
+        getBus(Context ctx) {
             context = ctx;
         }
+
         @Override
         protected String doInBackground(String... params) {
             String type = params[0];
             String login_url = "http://www.secs.oakland.edu/~ksmith/trackBus.php";
 
-            try{
+            try {
                 String useremail = params[1];
                 String password = params[2];
                 URL url = new URL(login_url);
-                HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 httpURLConnection.setRequestMethod("POST");
                 httpURLConnection.setDoOutput(true);
                 httpURLConnection.setDoInput(true);
                 OutputStream outputStream = httpURLConnection.getOutputStream();
                 BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
-                String post_data = URLEncoder.encode("useremail","UTF-8")+"="+URLEncoder.encode(useremail,"UTF-8")+"&"
-                        +URLEncoder.encode("password","UTF-8")+"="+URLEncoder.encode(password,"UTF-8");
+                String post_data = URLEncoder.encode("useremail", "UTF-8") + "=" + URLEncoder.encode(useremail, "UTF-8") + "&"
+                        + URLEncoder.encode("password", "UTF-8") + "=" + URLEncoder.encode(password, "UTF-8");
                 bufferedWriter.write(post_data);
                 bufferedWriter.flush();
                 bufferedWriter.close();
                 outputStream.close();
                 InputStream inputStream = httpURLConnection.getInputStream();
-                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream,"iso-8859-1"));
-                String result="";
-                String line="";
-                while((line = bufferedReader.readLine())!= null) {
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "iso-8859-1"));
+                String result = "";
+                String line = "";
+                while ((line = bufferedReader.readLine()) != null) {
                     result += line;
                 }
                 bufferedReader.close();
                 inputStream.close();
                 httpURLConnection.disconnect();
                 return result;
-            }   catch (MalformedURLException e) {
+            } catch (MalformedURLException e) {
                 e.printStackTrace();
-            }   catch (IOException e) {
+            } catch (IOException e) {
                 e.printStackTrace();
             }
-
-
-
             return null;
-
-
         }
 
-
+        /**
+         * Perform pre-execute tasts
+         */
         @Override
         protected void onPreExecute() {
             //PreExecute tasks
         }
 
-        //Convert PHP output to LatLng var and create marker
+        /**
+         * Converts PHP output to LatLng variable and create marker
+         *
+         * @param result outputs result of post execute actions
+         */
         @Override
         protected void onPostExecute(String result) {
 
-            String[] latlong =  result.split(",");
+            String[] latlong = result.split(",");
             double latitude = Double.parseDouble(latlong[0]);
             double longitude = Double.parseDouble(latlong[1]);
 
@@ -183,6 +186,11 @@ public class bus extends AppCompatActivity implements OnMapReadyCallback {
 
         }
 
+        /**
+         * Updates app progress
+         *
+         * @param values values to be updated
+         */
         @Override
         protected void onProgressUpdate(Void... values) {
             super.onProgressUpdate(values);

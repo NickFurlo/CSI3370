@@ -5,6 +5,11 @@ import android.os.Bundle;
 
 public class finAid extends AppCompatActivity {
 
+    /**
+     * Initializes activity.
+     *
+     * @param savedInstanceState current state to be saved and passed
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
