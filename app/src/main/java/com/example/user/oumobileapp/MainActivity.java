@@ -12,7 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
-
+//test
     private EditText etUsername, etPassword;
     private Button btnLogin;
     String username;
