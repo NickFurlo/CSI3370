@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
 
     private EditText etUsername, etPassword;
     private Button btnLogin;
+    String username;
 
     @Override
 
@@ -38,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
         String username = etUsername.getText().toString();
         String password = etPassword.getText().toString();
         String type = "login";
+
+        setUsername(username);
 
         /* need this to change to initite*/
         Background background = new Background(this);
@@ -73,5 +76,11 @@ public class MainActivity extends AppCompatActivity {
 
         changeLogin changeLogin = new changeLogin(this);
         changeLogin.execute(type, username, password);
+    }
+    void setUsername(String x){
+        username = x;
+    }
+    String getUsername(){
+        return username;
     }
 }
