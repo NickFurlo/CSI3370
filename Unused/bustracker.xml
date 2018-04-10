@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--- Nick Furlo 3/29/2018-->
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="260dp"
+        android:contentDescription="map"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/map" />
+
+    <ImageView
+        android:id="@+id/bus1"
+        android:layout_width="37dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="104dp"
+        android:contentDescription="bus"
+        app:layout_constraintEnd_toEndOf="@+id/bus2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/bus2"
+        app:layout_constraintTop_toBottomOf="@+id/bus5"
+        app:srcCompat="@drawable/bus" />
+
+    <ImageView
+        android:id="@+id/bus2"
+        android:layout_width="37dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:contentDescription="bus"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.253"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.742"
+        app:srcCompat="@drawable/bus" />
+
+    <ImageView
+        android:id="@+id/bus3"
+        android:layout_width="37dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:contentDescription="bus"
+        app:layout_constraintEnd_toEndOf="@+id/bus4"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/bus4"
+        app:layout_constraintTop_toBottomOf="@+id/bus4"
+        app:srcCompat="@drawable/bus" />
+
+    <ImageView
+        android:id="@+id/bus4"
+        android:layout_width="37dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="236dp"
+        android:layout_marginTop="8dp"
+        android:contentDescription="bus"
+        app:layout_constraintBottom_toTopOf="@+id/bus1"
+        app:layout_constraintEnd_toStartOf="@+id/bus6"
+        app:layout_constraintTop_toBottomOf="@+id/bus5"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/bus" />
+
+    <ImageView
+        android:id="@+id/bus5"
+        android:layout_width="37dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="140dp"
+        android:layout_marginTop="8dp"
+        android:contentDescription="bus"
+        app:layout_constraintEnd_toStartOf="@+id/bus6"
+        app:layout_constraintTop_toTopOf="@+id/imageView"
+        app:srcCompat="@drawable/bus" />
+
+    <ImageView
+        android:id="@+id/bus6"
+        android:layout_width="37dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView"
+        app:layout_constraintVertical_bias="0.406"
+        app:srcCompat="@drawable/bus" />
+
+</android.support.constraint.ConstraintLayout>
