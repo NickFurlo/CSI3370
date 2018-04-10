@@ -30,7 +30,7 @@ public class courseInfo extends AppCompatActivity {
 
     /**
      * Initializes buttons and textviews.
-     *
+     * test
      * @param savedInstanceState current state to be saved and passed
      */
     @Override
