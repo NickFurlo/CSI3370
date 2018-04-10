@@ -90,6 +90,6 @@
         android:layout_marginTop="94dp"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/oubear" />
+        app:srcCompat="@drawable/oubear2" />
 </android.support.constraint.ConstraintLayout>
 

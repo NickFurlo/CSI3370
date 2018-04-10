@@ -6,6 +6,15 @@
     android:layout_height="match_parent"
     tools:layout_editor_absoluteY="81dp">
 
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="188dp"
+        android:layout_height="96dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:srcCompat="@drawable/oubear" />
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
@@ -17,64 +26,72 @@
         android:textColorLink="@android:color/background_dark"
         app:layout_constraintBottom_toTopOf="@+id/button2"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/button2"
         android:layout_width="355dp"
         android:layout_height="52dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginTop="12dp"
+        android:drawableLeft="@drawable/ic_local_library_black_24dp"
         android:onClick="openActivity"
         android:text="Grades"
-        app:layout_constraintBottom_toTopOf="@+id/button3"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.517"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <Button
         android:id="@+id/button3"
         android:layout_width="355dp"
-        android:layout_height="54dp"
-        android:layout_marginTop="10dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="8dp"
         android:onClick="getGrizzID"
         android:text="GrizzID"
         app:layout_constraintHorizontal_bias="0.517"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
+        app:layout_constraintTop_toBottomOf="@+id/button2"
+        android:drawableLeft="@drawable/ic_assignment_ind_black_24dp" />
 
     <Button
         android:id="@+id/button4"
         android:layout_width="355dp"
-        android:layout_height="54dp"
-        android:layout_marginTop="10dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="8dp"
         android:onClick="openActivityBus"
         android:text="Bus Tracker"
         app:layout_constraintHorizontal_bias="0.517"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button3" />
+        app:layout_constraintTop_toBottomOf="@+id/button3"
+        android:drawableLeft="@drawable/ic_directions_bus_black_24dp" />
 
     <Button
         android:id="@+id/goFinAidBtn"
         android:layout_width="355dp"
-        android:layout_height="wrap_content"
+        android:layout_height="52dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:drawableLeft="@drawable/ic_attach_money_black_24dp"
         android:text="Financial Aid"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.538"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button4" />
 
     <Button
         android:id="@+id/goAdvisingBtn"
         android:layout_width="355dp"
-        android:layout_height="wrap_content"
+        android:layout_height="52dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:drawableLeft="@drawable/ic_people_black_24dp"
         android:text="Advising"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.538"
@@ -84,7 +101,7 @@
     <Button
         android:id="@+id/goCourseInfo"
         android:layout_width="355dp"
-        android:layout_height="wrap_content"
+        android:layout_height="52dp"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
@@ -94,6 +111,7 @@
         android:text="Course Info"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/goAdvisingBtn" />
+        app:layout_constraintTop_toBottomOf="@+id/goAdvisingBtn"
+        android:drawableLeft="@drawable/ic_class_black_24dp" />
 
 </android.support.constraint.ConstraintLayout>
