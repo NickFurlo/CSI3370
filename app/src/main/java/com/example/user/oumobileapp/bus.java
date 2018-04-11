@@ -67,22 +67,24 @@ public class bus extends AppCompatActivity implements OnMapReadyCallback {
 
         mMap = googleMap;
 
+        //Customize map zoom and type
+        mMap.setMinZoomPreference(10);
+        mMap.setMaxZoomPreference(20);
+        mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+
+        /*
         //Static bus locations
         LatLng bus1 = new LatLng(42.6776306, -83.2196052);
         LatLng bus2 = new LatLng(42.6734264, -83.2210523);
         LatLng bus3 = new LatLng(42.6719582, -83.2159923);
         LatLng bus4 = new LatLng(42.6742201, -83.2071659);
 
-        //Customize map zoom and type
-        mMap.setMinZoomPreference(10);
-        mMap.setMaxZoomPreference(20);
-        mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
-
         //Add markers
         mMap.addMarker(new MarkerOptions().position(bus1).title("Bus #1"));
         mMap.addMarker(new MarkerOptions().position(bus2).title("Bus #2"));
         mMap.addMarker(new MarkerOptions().position(bus3).title("Bus #3"));
         mMap.addMarker(new MarkerOptions().position(bus4).title("Bus #4"));
+        */
 
         //Set camera to base locatoin
         mMap.moveCamera(CameraUpdateFactory.newLatLng(oakland));
@@ -112,7 +114,6 @@ public class bus extends AppCompatActivity implements OnMapReadyCallback {
     }
 
     //Datbase connection
-    //CAN PROBABLY ONLY HANDLE A SINGLE LINE AS OF 4/2
     public class getBus extends AsyncTask<String, Void, String> {
         Context context;
 
@@ -176,14 +177,21 @@ public class bus extends AppCompatActivity implements OnMapReadyCallback {
         @Override
         protected void onPostExecute(String result) {
 
-            String[] latlong = result.split(",");
-            double latitude = Double.parseDouble(latlong[0]);
-            double longitude = Double.parseDouble(latlong[1]);
+            String[] stringArray = result.split("~");
+            for (int i = 0; i < stringArray.length; i++) {
+                //btnReset.setText(result);
 
-            LatLng location = new LatLng(latitude, longitude);
+                String numberAsString = stringArray[i];
 
-            mMap.addMarker(new MarkerOptions().position(location).title("Bus #5"));
+                String[] latlong = numberAsString.split(",");
+                double latitude = Double.parseDouble(latlong[0]);
+                double longitude = Double.parseDouble(latlong[1]);
 
+                LatLng location = new LatLng(latitude, longitude);
+
+                mMap.addMarker(new MarkerOptions().position(location).title("Bus"));
+
+            }
         }
 
         /**
