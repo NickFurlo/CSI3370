@@ -82,6 +82,12 @@ public class Home extends Activity {
         startActivity(i);
     }
 
+    public void openTest (View view){
+
+        Intent i = new Intent(this,Test.class);
+        startActivity(i);
+    }
+
     /**
      * queried PHP server for grizz ID of current authenticated user.
      *

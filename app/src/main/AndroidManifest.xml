@@ -28,7 +28,8 @@
         <activity android:name=".finAid" />
         <activity android:name=".advSelect" />
         <activity android:name=".AdvisorInfo" />
-        <activity android:name=".courseinfo"></activity>
+        <activity android:name=".courseinfo" />
+        <activity android:name=".Test"></activity>
     </application>
 
 </manifest>
