@@ -124,7 +124,7 @@ public class bus extends AppCompatActivity implements OnMapReadyCallback {
         @Override
         protected String doInBackground(String... params) {
             String type = params[0];
-            String login_url = "http://www.secs.oakland.edu/~gawalker/bus.php";
+            String login_url = "http://www.secs.oakland.edu/~ksmith/trackBus.php";
 
             try {
                 String useremail = params[1];
