@@ -7,38 +7,6 @@
     tools:context="com.example.user.oumobileapp.finAid">
 
     <TextView
-        android:id="@+id/Header1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Your Financial Aid History"
-        android:textColor="@android:color/black"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/awardYear"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:text="2017:"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.102"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Header1" />
-
-    <TextView
         android:id="@+id/awardName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -46,12 +14,11 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="40dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="28dp"
-        android:text="Dean's Award"
+        android:text="Award Name"
         app:layout_constraintEnd_toStartOf="@+id/amount"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.931"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/awardYear" />
+        tools:layout_editor_absoluteY="16dp" />
 
     <TextView
         android:id="@+id/amount"
@@ -59,8 +26,39 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="176dp"
         android:layout_marginRight="176dp"
-        android:layout_marginTop="28dp"
-        android:text="5000"
+        android:text="Amount"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/awardYear" />
+        tools:layout_editor_absoluteY="16dp" />
+
+    <TextView
+        android:id="@+id/aName1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        tools:layout_editor_absoluteX="37dp"
+        tools:layout_editor_absoluteY="74dp" />
+
+    <TextView
+        android:id="@+id/aAmount1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        tools:layout_editor_absoluteX="163dp"
+        tools:layout_editor_absoluteY="74dp" />
+
+    <TextView
+        android:id="@+id/aName2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        tools:layout_editor_absoluteX="37dp"
+        tools:layout_editor_absoluteY="137dp" />
+
+    <TextView
+        android:id="@+id/aAmount2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        tools:layout_editor_absoluteX="162dp"
+        tools:layout_editor_absoluteY="137dp" />
 </android.support.constraint.ConstraintLayout>
