@@ -7,7 +7,7 @@
     tools:context=".courseinfo">
 
     <Button
-        android:id="@+id/btnSemester"
+        android:id="@+id/btnPrefix"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -16,7 +16,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="40dp"
         android:onClick="chooseSemester"
-        android:text="Select Semester"
+        android:text="Course Type"
         app:layout_constraintEnd_toStartOf="@+id/btnCourse"
         app:layout_constraintHorizontal_bias="0.289"
         app:layout_constraintStart_toStartOf="parent"
@@ -30,7 +30,7 @@
         android:layout_marginRight="48dp"
         android:layout_marginTop="40dp"
         android:onClick="getCourseInfo"
-        android:text="Select Course"
+        android:text="Course Number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -46,7 +46,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.032"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnSemester" />
+        app:layout_constraintTop_toBottomOf="@+id/btnPrefix" />
 
     <TextView
         android:id="@+id/tvPrereq"
@@ -73,7 +73,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/btnSemester"
+        app:layout_constraintBottom_toTopOf="@+id/btnPrefix"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
